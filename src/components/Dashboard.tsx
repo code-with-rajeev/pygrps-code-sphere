@@ -14,15 +14,17 @@ export const Dashboard = () => {
   return (
     <div className="flex h-screen bg-gradient-bg">
       {/* Sidebar */}
-      <Sidebar 
-        isCollapsed={isSidebarCollapsed}
-        onToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-      />
+      <div className="flex-shrink-0">
+        <Sidebar 
+          isCollapsed={isSidebarCollapsed}
+          onToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        />
+      </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 h-screen">
         {/* Mode Switcher */}
-        <div className="p-4 border-b border-border bg-card/30 backdrop-blur-sm">
+        <div className="flex-shrink-0 p-4 border-b border-border bg-card/30 backdrop-blur-sm">
           <div className="flex items-center space-x-2">
             <Button
               variant={viewMode === 'coding' ? 'default' : 'ghost'}
@@ -46,7 +48,7 @@ export const Dashboard = () => {
         </div>
 
         {/* Dynamic Content */}
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 min-h-0">
           {viewMode === 'coding' ? <CodeEditor /> : <Documentation />}
         </div>
       </div>
